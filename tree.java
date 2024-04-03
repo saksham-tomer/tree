@@ -61,5 +61,46 @@ class BinarySearchTree {
 
         // }
         insert(root, value);
+
+    }
+
+    private TreeNode find(TreeNode root, int value) {
+        if (root == null)
+            return null;
+        if (root.data == value)
+            return root;
+        if (value < root.data) {
+            return find(root.leftChild, value);
+        }
+        return find(root.rightChild, value);
+    }
+
+    public TreeNode find(int value) {
+        return find(root, value);
+    }
+
+    private void preOrderTraversal(TreeNode root) {
+        if (root == null)
+            return;
+
+        preOrderTraversal(root.leftChild);
+        preOrderTraversal(root.rightChild);
+
+    }
+
+    public void preOrderTraversal() {
+        preOrderTraversal(root);
+    }
+
+    private void inOrderTreaversal(TreeNode root) {
+        if (root == null)
+            return;
+
+        inOrderTreaversal(root.leftChild, value);
+        inOrderTreaversal(root.rightChild, value);
+    }
+
+    public void inOrderTreaversal() {
+        inOrderTreaversal(root);
     }
 }
