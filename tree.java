@@ -103,4 +103,17 @@ class BinarySearchTree {
     public void inOrderTreaversal() {
         inOrderTreaversal(root);
     }
+
+    private int depth(TreeNode root, int value, int depth) {
+        if (root == null)
+            return -1;
+
+        if (root.data == value)
+            return depth;
+
+        if (value <= root.data) {
+            return depth(root.leftChild, value, depth + 1);
+        }
+        return depth(root.rightChild, value, depth + 1);
+    }
 }
