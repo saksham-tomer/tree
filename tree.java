@@ -117,6 +117,16 @@ class BinarySearchTree {
         return depth(root.rightChild, value, depth + 1);
     }
 
+    public int getHeightForNode(TreeNode root, int value) {
+        if (root == null)
+            return -1;
+        if (root.data == value)
+            return heightOfTree(root);
+
+        if (value <= root.data)
+            return getHeightForNode(root.leftChild, value);
+    }
+
     public int heightOfTree(TreeNode root) {
         if (root == null)
             return -1;
@@ -129,5 +139,17 @@ class BinarySearchTree {
 
     public int getHeight() {
         return heightOfTree(root, 1);
+    }
+
+    private boolean isEqual(TreeNode r1, TreeNode r2) {
+        if (r1 == null && r2 == null)
+            return true;
+
+        if (r1 == null)
+            return false;
+        if (r2 == null)
+            return false;
+
+        return r1.data == r2.data && isEqual(r1.leftChild, r2.leftChild) && isEqual(r1.rightChild, r2.rightChild);
     }
 }
